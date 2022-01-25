@@ -82,6 +82,7 @@ const getConfig = (inputs, state) => {
   config.region = inputs.region || state.region || 'us-east-1'
   config.bucketUrl = `http://${config.bucketName}.s3-website-${config.region}.amazonaws.com`
   config.src = inputs.src
+  config.tlsProtocolVersion = inputs.tlsProtocolVersion || 'TLSv1.1_2016';
 
   config.distributionId = state.distributionId
   config.distributionUrl = state.distributionUrl
@@ -582,7 +583,7 @@ const createCloudFrontDistribution = async (clients, config) => {
     distributionConfig.ViewerCertificate = {
       ACMCertificateArn: config.certificateArn,
       SSLSupportMethod: 'sni-only',
-      MinimumProtocolVersion: 'TLSv1.1_2016',
+      MinimumProtocolVersion: config.tlsProtocolVersion,
       Certificate: config.certificateArn,
       CertificateSource: 'acm'
     }
@@ -651,7 +652,7 @@ const updateCloudFrontDistribution = async (clients, config) => {
       params.DistributionConfig.ViewerCertificate = {
         ACMCertificateArn: config.certificateArn,
         SSLSupportMethod: 'sni-only',
-        MinimumProtocolVersion: 'TLSv1.1_2016',
+        MinimumProtocolVersion: config.tlsProtocolVersion,
         Certificate: config.certificateArn,
         CertificateSource: 'acm'
       }
