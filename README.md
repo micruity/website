@@ -5,6 +5,25 @@ To publish a new version:
 4. run `sls publish` in the root folder
 
 
+
+```yml
+component: website               # (required) name of the component. In that case, it's website.
+name: my-website                 # (required) name of your website component instance.
+org: serverlessinc               # (optional) serverless dashboard org. default is the first org you created during signup.
+app: my-app                      # (optional) serverless dashboard app. default is the same as the name property.
+stage: dev                       # (optional) serverless dashboard stage. default is dev.
+
+inputs:
+  src: ./src                     # (optional) path to the source folder. default is a hello world html file.
+  tlsProtocolVersion:  "TLSv1.2_2021" # tls protocol version to be used in the cloudfront distribution
+  domain: serverless.com         # (optional) domain name. this could also be a subdomain.
+  region: us-east-2              # (optional) aws region to deploy to. default is us-east-1.
+  bucketName: my-bucket          # (optional) aws bucket name. default is an auto generated name.
+  indexDocument: index.html      # (optional) index document for your website. default is index.html.
+  errorDocument: index.html      # (optional) error document for your website. default is index.html.
+```
+
+
 [![Serverless Components](https://s3.amazonaws.com/public.assets.serverless.com/images/readme_serverless_website.gif)](http://serverless.com)
 
 <br/>
