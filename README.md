@@ -1,7 +1,7 @@
 To publish a new version:
 1. close this repo to your local file system
 2. make sure you create a .env file in the root folder of the cloned repo
-3. create an access token in your serverless dashboard (go to org -> access keys) and put it in the .env file: SERVERLESS_ACCESS_KEY=<your new key>
+3. create an access token in your serverless dashboard (go to org -> access keys) and put it in the .env file: SERVERLESS_ACCESS_KEY="your new key"
 4. run `sls publish` in the root folder
 
 
